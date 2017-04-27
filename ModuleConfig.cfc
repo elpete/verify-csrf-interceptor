@@ -5,6 +5,12 @@ component {
     this.webUrl = "https://github.com/elpete/verify-csrf-interceptor";
 
     function configure() {
-        //
+        interceptors = [
+            {
+                name = "VerifyCSRF",
+                class = "#moduleMapping#.interceptors.VerifyCSRFInterceptor"
+            }
+        ];
     }
+
 }
