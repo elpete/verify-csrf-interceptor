@@ -1,7 +1,11 @@
 # verify-csrf-interceptor
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors)
 
+[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors)
 [![Master Branch Build Status](https://img.shields.io/travis/elpete/verify-csrf-interceptor/master.svg?style=flat-square&label=master)](https://travis-ci.org/elpete/verify-csrf-interceptor)
+
+<a target='_blank' rel='nofollow' href='https://app.codesponsor.io/link/TQMfPZtDP7SHs7UgJVGg61uH/elpete/verify-csrf-interceptor'>
+  <img alt='Sponsor' width='888' height='68' src='https://app.codesponsor.io/embed/TQMfPZtDP7SHs7UgJVGg61uH/elpete/verify-csrf-interceptor.svg' />
+</a>
 
 If you are like me, you often forget to include a CSRF token in each form (`csrfGenerateToken()`) and to check for one in each of your handlers that handle the form submissions (`csrfVerifyToken()`).  This interceptor checks for a CSRF token on all non-GET requests to help you out with this. (You will still need to add a `csrfGenerateToken()` call to your forms.)
 
