@@ -1,9 +1,10 @@
 /**
 * Verifies the CSRF token on all non-GET requests
 */
-component extends="coldbox.system.Interceptor"{
-    
-    public void function configure() {}
+component extends="coldbox.system.Interceptor" {
+
+    property name="handlerService" inject="coldbox:handlerService";
+    property name="coldboxVersion" inject="coldbox:fwSetting:version";
 
     public void function preEvent( event, interceptData, buffer ) {
         if ( event.getHTTPMethod() == "GET" ) {
@@ -33,16 +34,18 @@ component extends="coldbox.system.Interceptor"{
         required event,
         required struct interceptData
     ) {
-        var handler = getController()
-            .getHandlerService()
-            .getRegisteredHandler( interceptData.processedEvent );
+        if( listFirst( coldboxVersion, "." ) >= 5 ){
+            var handlerBean = handlerService.getHandlerBean( event.getCurrentEvent() );
+        } else {
+            var handlerBean = handlerService.getRegisteredHandler( event.getCurrentEvent() );
+        }
 
         var md = getComponentMetadata(
-            "#handler.getInvocationPath()#.#handler.getHandler()#"
+            "#handlerBean.getInvocationPath()#.#handlerBean.getHandler()#"
         );
 
         var funcs = arrayFilter( md.functions, function( func ) {
-            return func.name == handler.getMethod();
+            return func.name == handlerBean.getMethod();
         } );
 
         if ( NOT arrayIsEmpty( funcs ) ) {
@@ -55,5 +58,5 @@ component extends="coldbox.system.Interceptor"{
     }
 
 
-    
+
 }
