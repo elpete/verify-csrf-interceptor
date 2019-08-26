@@ -1,8 +1,8 @@
 {
     "name":"verify-csrf-interceptor",
-    "version":"1.0.1",
+    "version":"1.0.2",
     "author":"Eric Peterson",
-    "location":"elpete/verify-csrf-interceptor#v1.0.1",
+    "location":"elpete/verify-csrf-interceptor#v1.0.2",
     "homepage":"https://github.com/elpete/verify-csrf-interceptor",
     "documentation":"https://github.com/elpete/verify-csrf-interceptor",
     "repository":{
@@ -14,9 +14,7 @@
     "shortDescription":"Verifies the CSRF token on all non-GET requests",
     "description":"Verifies the CSRF token on all non-GET requests",
     "type":"modules",
-    "dependencies":{
-
-    },
+    "dependencies":{},
     "devDependencies":{
         "coldbox":"^5.0.0",
         "testbox":"^2.4.0+80"
